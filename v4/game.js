@@ -105,11 +105,11 @@ function collision(){
                 if(ball.y >= bricksArr[i].y && ball.y <= bricksArr[i].y +bricksArr[i].height){
                     if(bricksArr[i].show == true){
                         if(ball.incX <0){
-                            ball.incX = 2;
+                            ball.incX = -ball.incX;
                             ball.incY = 2;
                         }
                         else{
-                            ball.incX = -2;
+                            ball.incX = -ball.incX;
                             ball.incY = 2;
                         }
                         /*bricksArr[i].x=-200;
