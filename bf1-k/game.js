@@ -56,14 +56,14 @@ let ball = {
     },
 
     border: function(){
-        if(ball.x >= canvas.width){
+        if(ball.x+10 >= canvas.width){
             this.incX = Math.random() *-5 +2;
         }
-        else if(ball.x <= 0){
+        else if(ball.x-10 <= 0){
             this.incX = Math.random() *5 +2;
         }
 
-        if(ball.y >= canvas.height){
+        if(ball.y+10 >= canvas.height){
             if(attempts>0){
                 this.y = canvas.height -60;
                 this.x = canvas.width/2;
@@ -80,7 +80,7 @@ let ball = {
                 //gameOver.paint()//.style.zIndex = '120';
             }
         }
-        else if(ball.y <= 25){
+        else if(ball.y-10 <= 25){
             this.incY = Math.random() *5 +2;
         }
     }
@@ -89,8 +89,8 @@ let ball = {
 function playerCollision(){
     setInterval(function(){
         //console.log('fs');
-        if(ball.x >= player.x && ball.x <= player.x + player.width){
-            if(ball.y >= player.y && ball.y <= player.y +15){
+        if(ball.x+10 >= player.x && ball.x-10 <= player.x + player.width){
+            if(ball.y+10 >= player.y && ball.y-10 <= player.y +15){
                 ball.incY=Math.random()*-10+2;
             }
         }
@@ -101,8 +101,8 @@ function collision(){
     setInterval(function(){
         console.log('object');
         for(let i=0; i<61; i++){
-            if(ball.x >= bricksArr[i].x && ball.x <= bricksArr[i].x +bricksArr[i].width){
-                if(ball.y >= bricksArr[i].y && ball.y <= bricksArr[i].y +bricksArr[i].height){
+            if(ball.x+10 >= bricksArr[i].x && ball.x-10 <= bricksArr[i].x +bricksArr[i].width){
+                if(ball.y+10 >= bricksArr[i].y && ball.y-10 <= bricksArr[i].y +bricksArr[i].height){
                     if(bricksArr[i].show == true){
                         //if(ball.incX <0){
                             ball.incX = ball.incX;
