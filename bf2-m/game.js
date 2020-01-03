@@ -42,8 +42,8 @@ let player = {
 let ball = {
     x: canvas.width/2,
     y: canvas.height -80,
-    incX: Math.random() *5 +2,
-    incY: Math.random() *-5 -2,
+    incX: Math.random() *5 +3,
+    incY: Math.random() *-5 -3,
 
     paint: function(){
         ctx.beginPath();
@@ -356,7 +356,7 @@ let game = {
         })*/
         document.addEventListener('mousemove', function(event){
             let rect = canvas.getBoundingClientRect();
-            player.x = event.clientX - rect.left;
+            player.x = event.clientX - rect.left - player.width/2+2;
 
             
             //player.y = event.clientY;
