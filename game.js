@@ -62,19 +62,6 @@ let ball = {
         ctx.fill();
     },
 
-    /*move: function(){
-        if(sliderSB.value!="random"){
-            this.x += slider.value;
-            this.y -= slider.value;
-        }
-        //this.x += 2;
-        //this.y -= 2;
-        else{
-            this.x += 2;
-            this.y -= 2;
-        }
-    },*/
-
     border: function(){
         if(ball.x+ball.radius >= canvas.width){
             if(sliderSB.value!="random")
@@ -122,9 +109,7 @@ let ball = {
                 console.log(attempts);
             }
             else{
-                //alert('gfd');
                 attempts=-1;
-                //gameOver.paint()//.style.zIndex = '120';
             }
         }
         else if(ball.y-ball.radius <= 25){
@@ -137,119 +122,6 @@ let ball = {
         }
     }
 }
-
-/*function AddBall(x, y){
-    this.x = x;
-    this.y = y;
-    this.incX;
-    this.incY;
-
-    if(sliderSB.value=="random"){
-        this.incX = Math.random()*5;
-    }
-    else{
-        this.incX = parseInt(sliderSB.value);
-        this.incY = parseInt(sliderSB.value);
-    }
-        
-    ctx.beginPath();
-    ctx.fillStyle = '#487eb0';
-    ctx.arc(this.x, this.y, 10, 0, 2*Math.PI);
-    ctx.fill();
-}*/
-
-/*function addBallMove(){
-    for(let i=0; i<balls.length; i++){
-        balls[i].x+=balls[i].incX;
-        balls[i].y-=balls[i].incY;
-    }
-}*/
-
-/*function addBallCollision(){
-    setInterval(function(){
-        for(let b=0; b<balls.length; b++){
-            for(let i=0; i<bricksArr.length; i++){
-                if(balls[b].x+10 >= bricksArr[i].x && balls[b].x-10 <= bricksArr[i].x +bricksArr[i].width){
-                    if(balls[b].y+10 >= bricksArr[i].y && balls[b].y-10 <= bricksArr[i].y +bricksArr[i].height){
-                        if(bricksArr[i].show == true){
-                            if(sliderSB.value!="random"){
-                                balls[b].incX = balls[b].incX;
-                                balls[b].incY = -balls[b].incY;
-                            }
-                            else{
-                                balls[b].incX = Math.random()*-5+2;
-                                balls[b].incY = Math.random()*5+2;
-                            }
-    
-                            balls[b].incX=balls[b].incX;
-                            balls[b].incY=3;
-                            addBallMove();
-    
-                            bricksArr[i].show = false;
-                            score++;
-                        }
-                    }
-                }
-            }
-    
-            // BORDER ADDITIONAL BALL COLLISION
-            if(balls[b].x+10 >= canvas.width){
-                if(sliderSB.value!="random")
-                    balls[b].incX = parseInt(-sliderSB.value);
-    
-                else
-                    balls[b].incX = Math.random() *-5 +2;
-            }
-            else if(balls[b].x-10 <= 0){
-                if(sliderSB.value!="random")
-                    balls[b].incX = parseInt(sliderSB.value);
-    
-                else
-                    balls[b].incX = Math.random() *5 +2;
-            }
-    
-            if(balls[b].y+10 >= canvas.height){
-                if(attempts>0){
-                    balls[b].y = canvas.height -60;
-                    balls[b].x = canvas.width/2;
-                    if(sliderSB.value!="random"){
-                        balls[b].incX = parseInt(sliderSB.value);
-                        balls[b].incY = parseInt(-sliderSB.value);
-                    }
-    
-                    else{
-                        balls[b].incY = Math.random() *-5;
-                        balls[b].incX = Math.random() *5+2;
-                    }
-                    
-                    if(plWidthTaken==true){
-                        plWidthTaken=false;
-                         player.width=100;
-                         timer=1000; 
-                     }
-                    
-    
-                    attempts--;
-                    console.log(attempts);
-                }
-                else{
-                    //alert('gfd');
-                    attempts=-1;
-                    //gameOver.paint()//.style.zIndex = '120';
-                }
-            }
-            else if(balls[b].y-10 <= 25){
-                if(sliderSB.value!="random"){
-                    balls[b].incX = balls[b].incX;
-                    balls[b].incY = -balls[b].incY;
-                }
-                else
-                    balls[b].incY = Math.random() *5 +2;
-            }
-        }
-    },10)
-    
-}*/
 
 function playerCollision(){
     setInterval(function(){
@@ -273,9 +145,6 @@ function playerCollision(){
                     game.repaint();
                 }
                 if(boostRand == 2){
-                    //balls.push(new AddBall(player.x+player.width/2, player.y-30));
-                    //ball.incX = -ball.incX;
-                    //ball.incY = -ball.incY;
                     ball.radius += 10;
                     ballBoostTaken = true;
                 }
@@ -308,10 +177,6 @@ function collision(){
                                 ball.incX = Math.random()*-5+2;
                                 ball.incY = Math.random()*5+2;
                             }
-                            /*bricksArr[i].x=-200;
-                            console.log(bricksArr[i]);
-                            bricksArr[i].y = -200;
-                            game.repaint();*/
                             bricksArr[i].show = false;
                             score++;
                         }
@@ -327,9 +192,6 @@ function collision(){
                     if(ball.x+10 >= bricksArr[i][j].x && ball.x-10 <= bricksArr[i][j].x +bricksArr[i][j].width){
                         if(ball.y+10 >= bricksArr[i][j].y && ball.y-10 <= bricksArr[i][j].y +bricksArr[i][j].height){
                             if(bricksArr[i][j].show == true){
-                                /*testArrI.push(i);
-                                testArrJ.push(j);*/
-
                                 bricksArr[i][j].show = false;
                                 //ball.y+=25;
                                 ball.incX = ball.incX;
@@ -343,8 +205,6 @@ function collision(){
                             }
                         }
                     }
-                    //testArrI = []; 
-                    //testArrJ = [];
                 }
             }
         }
@@ -628,7 +488,6 @@ let game = {
 
                 if(boost.y>canvas.width+50 || boost.collision == true){
                     boosts();
-                    //boost.time=parseInt(sliderBT.value);
                 } 
             }
 
@@ -639,7 +498,6 @@ let game = {
                     plWidthTaken = false;
                     timer=1000;
                     player.width=100;
-                    //player.x+=50;
                 } 
             }
 
@@ -661,23 +519,10 @@ let game = {
         clear();
         if(score<=maxScore)
             bricksRepaint();
-        game.lifes();
+        game.lives();
         game.score();
         player.paint();
         ball.paint();
-        /*addBallMove();
-        addBallCollision();
-
-        for(let i=0; i<balls.length; i++){
-            balls[i] = new AddBall(balls[i].x, balls[i].y);
-        }*/
-
-        /*if(balls.length<=1){
-            for(let i=0; i<balls.length; i++){
-                balls[i].x+=balls[i].incX;
-                balls[i].y-=balls[i].incY;
-            }
-        }*/
 
         if(cursor.checked == true){
             document.getElementsByTagName("canvas")[0].style.cursor = "auto";
@@ -688,11 +533,11 @@ let game = {
         }
     },
 
-    lifes: function(){
+    lives: function(){
         ctx.beginPath();
         ctx.fillStyle = "#1289A7";
         ctx.font = '20px Fira Sans';
-        ctx.fillText('Lifes: ', 5, 20);
+        ctx.fillText('Lives: ', 5, 20);
         ctx.stroke();
 
         ctx.beginPath();
@@ -714,12 +559,6 @@ let game = {
             ctx.font = '200px Fira Sans';
             ctx.fillText('GAME OVER', 200, 515);
             ctx.stroke();
-
-            /*ctx.beginPath();
-            ctx.fillStyle = "#130f40";
-            ctx.font = '50px Fira Sans';
-            ctx.fillText('Press P to play again', 500, 600);
-            ctx.stroke();*/
         }
     },
 
@@ -752,48 +591,9 @@ let game = {
             ctx.font = '200px Fira Sans';
             ctx.fillText('WIN', 550, 515);
             ctx.stroke();
-    
-            /*ctx.beginPath();
-            ctx.fillStyle = "#130f40";
-            ctx.font = '50px Fira Sans';
-            ctx.fillText('Press P to play again', 500, 600);
-            ctx.stroke();*/
         }
     }
 }
-
-/*let gameOver = {
-    paint: function(){
-        ctx.beginPath();
-        ctx.fillStyle = '#EE5A24';
-        ctx.fillRect(0, 200, 1500, 500);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.fillStyle = "#130f40";
-        ctx.font = '200px Fira Sans';
-        ctx.fillText('GAME OVER', 200, 500);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.fillStyle = "#130f40";
-        ctx.font = '50px Fira Sans';
-        ctx.fillText('Press Y to play again', 500, 600);
-        ctx.stroke();
-        gameOver.again();
-    },
-    again: function(){
-        document.addEventListener('keypress', function (event){
-            switch (event.code) {
-                case 'ArrowDown':
-                    console.log('again');
-                    //game.start();
-                    break;
-            }
-            
-            
-            //game.repaint();
-        })
-    }
-}*/
 
 
 // --- BOOSTS ---
@@ -929,9 +729,6 @@ sliderBS.oninput = function() {
 
 // --- START ---
 
-//ball.incX = 0;
-//ball.incY = 0;
-
 function startGame() {
     ctx.beginPath();
     ctx.fillStyle = '#EE5A24';
@@ -953,11 +750,11 @@ function startGame() {
 }
 
 let start = true;
-//let restart = false;
+
+let incStart = Math.floor(Math.random()*2);
 
 startGame();
 document.addEventListener('keydown', function (event){
-    //console.log(event.code);
     switch(event.code){
         case 'KeyP':
             if(start==true){
@@ -965,6 +762,13 @@ document.addEventListener('keydown', function (event){
                 game.movement();
                 game.start();
                 start=false;
+
+                if(incStart == 0){
+                    ball.incX = -ball.incX;
+                }
+                else{
+                    ball.incX = ball.incX;
+                }
             }
     }
 })
